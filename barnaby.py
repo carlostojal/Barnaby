@@ -47,23 +47,18 @@ while(flag == True):
     user_response = user_response.lower()
     if(user_response != "bye"):
         print("Barnaby: ", end="")
-        print("typing...")
+        print("typing...", end="")
         if(user_response == "thanks" or user_response == "thank you"):
             flag = False
-            print("\r")
             barnabyTools.output("You're welcome.")
         else:
             if(barnabyTools.greeting(user_response) != None):
-                print("\r")
                 barnabyTools.output(barnabyTools.greeting(user_response))
             elif(barnabyTools.news(user_response) != None):
-                print("\r")
                 barnabyTools.output(barnabyTools.news(user_response))
             elif(barnabyTools.weather(user_response) != None):
-                print("\r")
                 barnabyTools.output(barnabyTools.weather(user_response))
             else:
-                print("\r")
                 barnabyTools.output(barnabyTools.response(user_response))
                 barnabyTools.sent_tokens.remove(user_response)
     else:
