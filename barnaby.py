@@ -15,6 +15,11 @@ flag = True
 
 print("")
 
+print("Weather by OpenWeatherMap API")
+print("News by NewsAPI")
+
+print("")
+
 print(" /$$$$$$$                                          /$$                ")
 print("| $$__  $$                                        | $$                ")
 print("| $$  \ $$  /$$$$$$   /$$$$$$  /$$$$$$$   /$$$$$$ | $$$$$$$  /$$   /$$")
@@ -26,6 +31,7 @@ print("|_______/  \_______/|__/      |__/  |__/ \_______/|_______/  \____  $$")
 print("                                                             /$$  | $$")
 print("                                                            |  $$$$$$/")
 print("                                                             \______/ ")
+print("Developed by Carlos Tojal")
 
 print("")
 
@@ -43,6 +49,7 @@ while(flag == True):
         user_response = r.recognize_google(audio)
         print(user_response)
     except sr.UnknownValueError:
+        print("(imperceptible)")
         continue
     user_response = user_response.lower()
     if(user_response != "bye"):
@@ -65,4 +72,3 @@ while(flag == True):
         flag = False
         print("Barnaby: ", end="")
         barnabyTools.output("Bye, see you later.")
-    print("")
