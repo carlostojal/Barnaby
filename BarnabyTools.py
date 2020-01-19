@@ -12,6 +12,8 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
+import speech_recognition as sr
+import pyttsx3
 
 from inputs import *
 from responses import *
@@ -30,11 +32,17 @@ class BarnabyTools:
 
         raw = raw.lower()
 
-        nltk.download('punkt')
-        nltk.download('wordnet')
+        nltk.download('punkt', quiet=True)
+        nltk.download('wordnet', quiet=True)
 
         self.sent_tokens = nltk.sent_tokenize(raw)
         self.word_tokens = nltk.word_tokenize(raw)
+
+    def output(self, sentence):
+        print(sentence)
+        engine = pyttsx3.init()
+        engine.say(sentence)
+        engine.runAndWait()
 
     def greeting(self, sentence):
         for word in sentence.split():
@@ -79,12 +87,13 @@ class BarnabyTools:
                         data = r.json()
 
                 # returns response to user
-                output = "It's " + str(data['main']['temp']) + "ºC, " + data['weather'][0]['description'] + " in " + data['name']
+                output = "It's " + str(data['main']['temp']) + "C, " + data['weather'][0]['description'] + " in " + data['name']
                 if not city_in_sentence:
                     output += " (I think it's your location)."
                 else:
                     output += "."
                 return output
+
     def news(self, sentence):
         for word in sentence.split():
             if word.lower() in NEWS_INPUTS:
