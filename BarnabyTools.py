@@ -85,6 +85,31 @@ class BarnabyTools:
                 else:
                     output += "."
                 return output
+    def news(self, sentence):
+        for word in sentence.split():
+            if word.lower() in NEWS_INPUTS:
+                # gets user country by IP address
+                URL = "https://api.ipgeolocation.io/ipgeo"
+                PARAMS = {
+                    'apiKey': '747a7ad91fc84b2b83dff71d9ac0af16',
+                }
+                r = requests.get(url = URL, params = PARAMS)
+                full_country = r.json()['country_name']
+                country = r.json()['country_code2']
+                
+                URL = "https://newsapi.org/v2/top-headlines"
+                PARAMS = {
+                    'apiKey': 'ea061f4b7a9b4d3a9df9025cdbc5b2ae',
+                    'country': country
+                }
+                r = requests.get(url = URL, params = PARAMS)
+                # print(country)
+                data = r.json()
+                # print(data)
+                output = "Here are the top headlines in " + full_country + " (I think it's your location).\n\n"
+                for i in range(3):
+                    output += "\'" + data['articles'][i]['title'] + "\' - " + data['articles'][i]['source']['name'] + " at " + data['articles'][i]['publishedAt'] + "\n(" + data['articles'][i]['url'] + ")\n\n"
+                return output
 
     def LemTokens(self, tokens):
         return [self.lemmer.lemmatize(token) for token in tokens]

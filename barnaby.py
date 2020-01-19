@@ -10,7 +10,7 @@ from BarnabyTools import *
 barnabyTools = BarnabyTools()
 
 flag = True
-print("\nBarnaby: My name is Barnaby. You can talk to me. To exit, say bye.")
+print("\nBarnaby: My name is Barnaby, your personal assistant. You can talk to me. To exit, say bye.")
 
 while(flag == True):
     print("")
@@ -23,6 +23,8 @@ while(flag == True):
         else:
             if(barnabyTools.greeting(user_response) != None):
                 print("Barnaby: " + barnabyTools.greeting(user_response))
+            elif(barnabyTools.news(user_response) != None):
+                print("Barnaby: " + barnabyTools.news(user_response))
             elif(barnabyTools.weather(user_response) != None):
                 print("Barnaby: " + barnabyTools.weather(user_response))
             else:
