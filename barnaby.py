@@ -6,8 +6,10 @@
 #
 
 from BarnabyTools import *
+from User import *
 
 barnabyTools = BarnabyTools()
+user = User()
 r = sr.Recognizer()
 mic = sr.Microphone()
 
@@ -35,13 +37,35 @@ print("Developed by Carlos Tojal")
 
 print("")
 
-print("Barnaby: ", end="")
-barnabyTools.output("Hi, my name is Barnaby. I'm your personal assistant. You can talk to me. To exit, say bye.\n")
+user = User()
+user1 = {}
+
+if not barnabyTools.user_exists():
+    barnabyTools.output(barnabyTools.welcome())
+    barnabyTools.output("Please answer directly, don't give complete answers.")
+    print("Barnaby: ", end="")
+    barnabyTools.output("What's your name?")
+    user.setName(input("You: "))
+    print("Barnaby: ", end="")
+    while user.getGenre() != "male" and user.getGenre() != "female":
+        barnabyTools.output("What's your genre (Male/Female)?")
+        user.setGenre(input("You: ").lower())
+    user1 = {
+        'name': user.getName(),
+        'genre': user.getGenre()
+    }
+    user.saveUser(user1)
+    user.loadUser()
+    barnabyTools.output(barnabyTools.welcome() + ", " + user.getName())
+
+user.loadUser()
+barnabyTools.output(barnabyTools.welcome_back(user))
 
 while(flag == True):
-    print("You: ")
+    # print("You: ")
     user_response = ""
-    # user_response = input("You: ")
+    user_response = input("You: ")
+    '''
     with mic as source:
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
@@ -51,6 +75,7 @@ while(flag == True):
     except sr.UnknownValueError:
         print("(imperceptible)")
         continue
+    '''
     user_response = user_response.lower()
     if(user_response != "bye"):
         print("Barnaby: ", end="")

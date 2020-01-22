@@ -12,6 +12,7 @@ Barnaby is a personal assistant.
 * Numpy (Module)
 * Random (Module)
 * String (Module)
+* JSON (Module)
 * SKLearn (Module)
 * Requests (Module)
 * SpeechRecognition (Module)

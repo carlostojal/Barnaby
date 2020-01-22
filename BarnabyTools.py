@@ -14,6 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import speech_recognition as sr
 import pyttsx3
+import os
 
 from inputs import *
 from responses import *
@@ -37,6 +38,9 @@ class BarnabyTools:
 
         self.sent_tokens = nltk.sent_tokenize(raw)
         self.word_tokens = nltk.word_tokenize(raw)
+    
+    def user_exists(self):
+        return os.path.exists("user_data.json")
 
     def output(self, sentence):
         print(sentence)
@@ -44,10 +48,19 @@ class BarnabyTools:
         engine.say(sentence)
         engine.runAndWait()
 
+    def welcome(self):
+        return random.choice(GREETING_RESPONSES) + ". " + random.choice(WELCOME_RESPONSES)
+
+    def welcome_back(self, user):
+        return random.choice(WELCOME_BACK_RESPONSES) + ", " + user.getName()
+
     def greeting(self, sentence):
         for word in sentence.split():
             if word.lower() in GREETING_INPUTS:
                 return random.choice(GREETING_RESPONSES)
+
+    def affirmative(self):
+        return random.choice(AFFIRMATIVE_RESPONSES)
     
     def weather(self, sentence):
         for word in sentence.split():
