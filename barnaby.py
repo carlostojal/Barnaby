@@ -19,6 +19,7 @@ print("")
 
 print("Weather by OpenWeatherMap API")
 print("News by NewsAPI")
+print("Search by Google Custom Search API")
 
 print("")
 

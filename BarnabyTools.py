@@ -82,11 +82,32 @@ class BarnabyTools:
         return response
     
     def weather(self, sentence):
+        # Ex: 
+        # how's the weather
+        # how's the weather in lisbon
+        city_in_sentence = False
         if sentence in WEATHER_INPUTS:
-            city_in_sentence = False
-            # searches city in user sentence
+            # gets user city by IP address
+            URL = "https://api.ipgeolocation.io/ipgeo"
+            PARAMS = {
+                'apiKey': '747a7ad91fc84b2b83dff71d9ac0af16',
+            }
+            r = requests.get(url = URL, params = PARAMS)
+            city = r.json()['city']
+
             URL = "https://api.openweathermap.org/data/2.5/weather"
-            for city_search in sentence.split():
+            PARAMS = {
+                'apikey': 'c9f1d2a6eaec5f917473c187547ba288',
+                'q': city,
+                'units': 'metric'
+            }
+            r = requests.get(url = URL, params = PARAMS)
+            data = r.json()
+        elif "in" in sentence.split():
+            if sentence.split(" in ")[0] in WEATHER_INPUTS:
+                city_search = sentence.split(" in ")[1]
+                # searches city in user sentence
+                URL = "https://api.openweathermap.org/data/2.5/weather"
                 PARAMS = {
                     'apikey': 'c9f1d2a6eaec5f917473c187547ba288',
                     'q': city_search,
@@ -94,21 +115,16 @@ class BarnabyTools:
                 }
                 r = requests.get(url = URL, params = PARAMS)
                 data = r.json()
-                if data['cod'] == 200:
-                    city = data['name']
-                    city_in_sentence = True
-                    break
-            if not city_in_sentence:
-                # gets user city by IP address
-                URL = "https://api.ipgeolocation.io/ipgeo"
-                PARAMS = {
-                    'apiKey': '747a7ad91fc84b2b83dff71d9ac0af16',
-                }
-                r = requests.get(url = URL, params = PARAMS)
-                city = r.json()['city']
-
-                URL = "https://api.openweathermap.org/data/2.5/weather"
-                for city_search in sentence.split():
+                if data['cod'] != 200:
+                    # gets user city by IP address
+                    URL = "https://api.ipgeolocation.io/ipgeo"
+                    PARAMS = {
+                        'apiKey': '747a7ad91fc84b2b83dff71d9ac0af16',
+                    }
+                    r = requests.get(url = URL, params = PARAMS)
+                    city = r.json()['city']
+ 
+                    URL = "https://api.openweathermap.org/data/2.5/weather"
                     PARAMS = {
                         'apikey': 'c9f1d2a6eaec5f917473c187547ba288',
                         'q': city,
@@ -116,7 +132,10 @@ class BarnabyTools:
                     }
                     r = requests.get(url = URL, params = PARAMS)
                     data = r.json()
+                else:
+                    city_in_sentence = True
 
+        if 'data' in locals():
             # returns response to user
             output = "It's " + str(data['main']['temp']) + "C, " + data['weather'][0]['description'] + " in " + data['name']
             if not city_in_sentence:
