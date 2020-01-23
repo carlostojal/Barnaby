@@ -71,23 +71,29 @@ while(True):
     print(user_response)
     if("barnaby" in user_response.split()):
         barnabyTools.output(barnabyTools.greeting(user))
-        # user_response = input("You: ")
-        user_response = barnabyTools.input()
-        user_response = user_response.lower()
-        print(user_response)
-        print("Barnaby: ", end="")
-        barnabyTools.output(barnabyTools.affirmative(user))
-        print("Barnaby: typing...")
-        if(barnabyTools.news(user_response) != None):
-            news = barnabyTools.news(user_response)
-            barnabyTools.output(news.split("\n")[0])
-            barnabyTools.output(news.split("\n")[2].split(" - ")[0])
-            barnabyTools.output(news.split("\n")[5].split(" - ")[0])
-            barnabyTools.output(news.split("\n")[8].split(" - ")[0])
-            # barnabyTools.output(barnabyTools.news(user_response))
-        elif(barnabyTools.weather(user_response) != None):
-            barnabyTools.output(barnabyTools.weather(user_response))
-        else:
-            barnabyTools.output(barnabyTools.response(user_response))
-            barnabyTools.sent_tokens.remove(user_response)
+        user_response = "(imperceptible)"
+        while user_response == "(imperceptible)":
+            # user_response = input("You: ")
+            user_response = barnabyTools.input()
+            user_response = user_response.lower()
+            print(user_response)
+            if user_response != "(imperceptible)":
+                print("Barnaby: ", end="")
+                barnabyTools.output(barnabyTools.affirmative(user))
+                print("Barnaby: typing...")
+                print("Barnaby: ", end="")
+                if(barnabyTools.news(user_response) != None):
+                    news = barnabyTools.news(user_response)
+                    barnabyTools.output(news.split("\n")[0])
+                    barnabyTools.output(news.split("\n")[2].split(" - ")[0])
+                    barnabyTools.output(news.split("\n")[5].split(" - ")[0])
+                    barnabyTools.output(news.split("\n")[8].split(" - ")[0])
+                    # barnabyTools.output(barnabyTools.news(user_response))
+                elif(barnabyTools.weather(user_response) != None):
+                    barnabyTools.output(barnabyTools.weather(user_response))
+                elif(barnabyTools.search(user_response) != None):
+                    barnabyTools.output(barnabyTools.search(user_response))
+                else:
+                    barnabyTools.output(barnabyTools.response(user_response))
+                    barnabyTools.sent_tokens.remove(user_response)
         barnabyTools.output(barnabyTools.goodbye(user))

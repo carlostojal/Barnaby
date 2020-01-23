@@ -149,6 +149,18 @@ class BarnabyTools:
             for i in range(3):
                 output += "\'" + data['articles'][i]['title'] + "\' - " + data['articles'][i]['source']['name'] + " at " + data['articles'][i]['publishedAt'] + "\n(" + data['articles'][i]['url'] + ")\n\n"
             return output
+        
+    def search(self, sentence):
+        URL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAw1RSB8i_FET7eiF1SbnzjQvz_jl5y3aA&cx=012615923940155512814:ehd2wi47xev&q=democracy"
+        PARAMS = {
+            'key': 'AIzaSyAw1RSB8i_FET7eiF1SbnzjQvz_jl5y3aA',
+            'cx': '012615923940155512814:ehd2wi47xev',
+            'q': sentence
+        }
+        r = requests.get(url = URL, params = PARAMS)
+        data = r.json()
+        output = "I discovered this on the internet.\n\n" + data['items'][0]['title'] + "\n" + data['items'][1]['title'] + "\n" + data['items'][2]['title']
+        return output
 
     def LemTokens(self, tokens):
         return [self.lemmer.lemmatize(token) for token in tokens]
