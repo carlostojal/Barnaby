@@ -23,8 +23,12 @@ class User:
         self.setGenre(user_data['genre'])
         return user_data
 
-    def saveUser(self, user):
+    def saveUser(self):
         f = open("user_data.json", "w")
+        user = {
+            'name': self.getName(),
+            'genre': self.getGenre()
+        }
         f.write(json.dumps(user))
         f.close()
 

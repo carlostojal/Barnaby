@@ -42,58 +42,52 @@ user1 = {}
 
 if not barnabyTools.user_exists():
     barnabyTools.output(barnabyTools.welcome())
-    barnabyTools.output("Please answer directly, don't give complete answers.")
     print("Barnaby: ", end="")
     barnabyTools.output("What's your name?")
-    user.setName(input("You: "))
-    print("Barnaby: ", end="")
+    # user.setName(input("You: "))
+    print("You: ", end="")
+    user.setName(barnabyTools.input())
+    print(user.getName())
+    barnabyTools.affirmative(user)
     while user.getGenre() != "male" and user.getGenre() != "female":
+        print("Barnaby: ", end="")
         barnabyTools.output("What's your genre (Male/Female)?")
-        user.setGenre(input("You: ").lower())
-    user1 = {
-        'name': user.getName(),
-        'genre': user.getGenre()
-    }
-    user.saveUser(user1)
-    user.loadUser()
+        # user.setGenre(input("You: ").lower())
+        print("You: ", end="")
+        user.setGenre(barnabyTools.input())
+        print(user.getGenre())
+    barnabyTools.affirmative(user)
+    user.saveUser()
     barnabyTools.output(barnabyTools.welcome() + ", " + user.getName())
+else:
+    user.loadUser()
+    barnabyTools.output(barnabyTools.welcome_back(user))
 
-user.loadUser()
-barnabyTools.output(barnabyTools.welcome_back(user))
-
-while(flag == True):
-    # print("You: ")
+while(True):
     user_response = ""
-    user_response = input("You: ")
-    '''
-    with mic as source:
-        r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
-    try:
-        user_response = r.recognize_google(audio)
-        print(user_response)
-    except sr.UnknownValueError:
-        print("(imperceptible)")
-        continue
-    '''
+    # user_response = input("You: ")
+    user_response = barnabyTools.input()
     user_response = user_response.lower()
-    if(user_response != "bye"):
+    print(user_response)
+    if("barnaby" in user_response.split()):
+        barnabyTools.output(barnabyTools.greeting(user))
+        # user_response = input("You: ")
+        user_response = barnabyTools.input()
+        user_response = user_response.lower()
+        print(user_response)
         print("Barnaby: ", end="")
-        print("typing...", end="")
-        if(user_response == "thanks" or user_response == "thank you"):
-            flag = False
-            barnabyTools.output("You're welcome.")
+        barnabyTools.output(barnabyTools.affirmative(user))
+        print("Barnaby: typing...")
+        if(barnabyTools.news(user_response) != None):
+            news = barnabyTools.news(user_response)
+            barnabyTools.output(news.split("\n")[0])
+            barnabyTools.output(news.split("\n")[2].split(" - ")[0])
+            barnabyTools.output(news.split("\n")[5].split(" - ")[0])
+            barnabyTools.output(news.split("\n")[8].split(" - ")[0])
+            # barnabyTools.output(barnabyTools.news(user_response))
+        elif(barnabyTools.weather(user_response) != None):
+            barnabyTools.output(barnabyTools.weather(user_response))
         else:
-            if(barnabyTools.greeting(user_response) != None):
-                barnabyTools.output(barnabyTools.greeting(user_response))
-            elif(barnabyTools.news(user_response) != None):
-                barnabyTools.output(barnabyTools.news(user_response))
-            elif(barnabyTools.weather(user_response) != None):
-                barnabyTools.output(barnabyTools.weather(user_response))
-            else:
-                barnabyTools.output(barnabyTools.response(user_response))
-                barnabyTools.sent_tokens.remove(user_response)
-    else:
-        flag = False
-        print("Barnaby: ", end="")
-        barnabyTools.output("Bye, see you later.")
+            barnabyTools.output(barnabyTools.response(user_response))
+            barnabyTools.sent_tokens.remove(user_response)
+        barnabyTools.output(barnabyTools.goodbye(user))

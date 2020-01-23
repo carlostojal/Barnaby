@@ -11,4 +11,6 @@ WELCOME_BACK_RESPONSES = ["welcome back", "it's good to see you again"]
 
 GREETING_RESPONSES = ["hi", "hey", "hi there", "hello"]
 
-AFFIRMATIVE_RESPONSES = ["ok", "alright"]
+GOODBYE_RESPONSES = ["bye, see you later", "goodbye", "bye"]
+
+AFFIRMATIVE_RESPONSES = ["ok", "alright", "yes"]
