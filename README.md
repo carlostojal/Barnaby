@@ -17,10 +17,10 @@ He was created using Python.
 ![Weather](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/3.png)
 
 ## Examples
-* > "How's the weather?"
-* > "How's the weather in Lisbon?"
-* > "Show me the news"
-* > "What is democracy?"
+> "How's the weather?"
+> "How's the weather in Lisbon?"
+> "Show me the news"
+> "What is democracy?"
 
 ## Prequesites
 * Python 3
