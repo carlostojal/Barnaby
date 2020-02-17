@@ -1,10 +1,15 @@
 # Barnaby
 Barnaby is a personal assistant.
 
+![News](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/1.png)
+![Answers](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/2.png)
+![Weather](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/3.png)
+
 ## Examples
 * "How's the weather?"
 * "How's the weather in Lisbon?"
 * "Show me the news"
+* "What is democracy"
 
 ## Prequesites
 * Python 3
