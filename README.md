@@ -1,21 +1,26 @@
 # Barnaby
-Barnaby is a personal assistant.
+Barnaby is a personal assistant. 
+He uses OpenWeatherMap API to get current weather, NewsAPI to get the latest news, and DuckDuckGo API to give instant answers based in internet information.
+He was created using Python.
 
 ## Overview
 * Headlines by location
+
 ![News](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/1.png)
 
 * Answers
+
 ![Answers](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/2.png)
 
 * Weather
+
 ![Weather](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/3.png)
 
 ## Examples
-* "How's the weather?"
-* "How's the weather in Lisbon?"
-* "Show me the news"
-* "What is democracy"
+* > "How's the weather?"
+* > "How's the weather in Lisbon?"
+* > "Show me the news"
+* > "What is democracy?"
 
 ## Prequesites
 * Python 3
