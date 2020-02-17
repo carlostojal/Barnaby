@@ -1,8 +1,11 @@
 # Barnaby
 Barnaby is a personal assistant.
 
+* Headlines by region
 ![News](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/1.png)
+* Answers
 ![Answers](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/2.png)
+* Weather
 ![Weather](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/3.png)
 
 ## Examples
