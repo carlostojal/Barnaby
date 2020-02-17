@@ -18,11 +18,14 @@ He was created using Python.
 
 ## Examples
 > "How's the weather?"
+
 > "How's the weather in Lisbon?"
+
 > "Show me the news"
+
 > "What is democracy?"
 
-## Prequesites
+## Prerequisites
 * Python 3
 * nltk (Module)
 * Numpy (Module)
@@ -41,4 +44,6 @@ He was created using Python.
 * Remove the file ```user_data.json```, so Barnaby will ask your personal information in the first start.
 
 ## How to use
+* Install all prerequisites.
+* Use the command ```python3 barnaby.py``` to start the application.
 * When Barnaby wakes up, just say his name and ask him something.
