@@ -166,7 +166,7 @@ class BarnabyTools:
             # print(data)
             output = "Here are the top headlines in " + full_country + " (I think it's your location).\n\n"
             for i in range(3):
-                output += "\'" + data['articles'][i]['title'] + "\' - " + data['articles'][i]['source']['name'] + " at " + data['articles'][i]['publishedAt'] + "\n(" + data['articles'][i]['url'] + ")\n\n"
+                output += "\'" + data['articles'][i]['title'] + "\'.\n\n"
             return output
         
     def search(self, sentence):
