@@ -19,7 +19,7 @@ print("")
 
 print("Weather by OpenWeatherMap API")
 print("News by NewsAPI")
-print("Search by Google Custom Search API")
+print("Answers by DuckDuckGo API")
 
 print("")
 
@@ -84,12 +84,7 @@ while(True):
                 print("Barnaby: typing...")
                 print("Barnaby: ", end="")
                 if(barnabyTools.news(user_response) != None):
-                    news = barnabyTools.news(user_response)
-                    barnabyTools.output(news.split("\n")[0])
-                    barnabyTools.output(news.split("\n")[2].split(" - ")[0])
-                    barnabyTools.output(news.split("\n")[5].split(" - ")[0])
-                    barnabyTools.output(news.split("\n")[8].split(" - ")[0])
-                    # barnabyTools.output(barnabyTools.news(user_response))
+                    barnabyTools.output(barnabyTools.news(user_response))
                 elif(barnabyTools.weather(user_response) != None):
                     barnabyTools.output(barnabyTools.weather(user_response))
                 elif(barnabyTools.search(user_response) != None):

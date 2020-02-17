@@ -170,16 +170,19 @@ class BarnabyTools:
             return output
         
     def search(self, sentence):
-        URL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAw1RSB8i_FET7eiF1SbnzjQvz_jl5y3aA&cx=012615923940155512814:ehd2wi47xev&q=democracy"
+        URL = "https://api.duckduckgo.com"
         PARAMS = {
-            'key': 'AIzaSyAw1RSB8i_FET7eiF1SbnzjQvz_jl5y3aA',
-            'cx': '012615923940155512814:ehd2wi47xev',
-            'q': sentence
+            'q': sentence,
+            'format': 'json',
+            'pretty': '1'
         }
         r = requests.get(url = URL, params = PARAMS)
         data = r.json()
-        output = "I discovered this on the internet.\n\n" + data['items'][0]['title'] + "\n" + data['items'][1]['title'] + "\n" + data['items'][2]['title']
-        return output
+        if data['AbstractText'] == "":
+            return "Sorry, I didn't understand."
+        else:
+            output = "I discovered this on the internet.\n\n" + data['AbstractText']
+            return output
 
     def LemTokens(self, tokens):
         return [self.lemmer.lemmatize(token) for token in tokens]
