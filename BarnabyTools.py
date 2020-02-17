@@ -181,7 +181,7 @@ class BarnabyTools:
         if data['AbstractText'] == "":
             return "Sorry, I didn't understand."
         else:
-            output = "I discovered this on the internet.\n\n" + data['AbstractText']
+            output = "I discovered this on the internet.\n\n" + data['AbstractText'] + "\n\nInformation from " + data['AbstractSource']
             return output
 
     def LemTokens(self, tokens):
