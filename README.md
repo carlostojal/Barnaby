@@ -20,3 +20,9 @@ Barnaby is a personal assistant.
 * espeak (Module) in Linux
 * nsss (Module) in macOS
 * sapi5 (Module) in Windows
+
+## Configuration
+* Remove the file ```user_data.json```, so Barnaby will ask your personal information.
+
+## How to use
+* When Barnaby wakes up, just say his name and ask him something.
