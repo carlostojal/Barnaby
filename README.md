@@ -1,10 +1,13 @@
 # Barnaby
 Barnaby is a personal assistant.
 
-* Headlines by region
+## Overview
+* Headlines by location
 ![News](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/1.png)
+
 * Answers
 ![Answers](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/2.png)
+
 * Weather
 ![Weather](https://raw.githubusercontent.com/carlostojal/Barnaby/master/media/3.png)
 
@@ -30,7 +33,7 @@ Barnaby is a personal assistant.
 * sapi5 (Module) in Windows
 
 ## Configuration
-* Remove the file ```user_data.json```, so Barnaby will ask your personal information.
+* Remove the file ```user_data.json```, so Barnaby will ask your personal information in the first start.
 
 ## How to use
 * When Barnaby wakes up, just say his name and ask him something.
