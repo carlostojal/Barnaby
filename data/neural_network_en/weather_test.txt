@@ -1,0 +1,3 @@
+show me the weather
+is it hot outside?
+how cold is it?
