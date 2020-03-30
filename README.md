@@ -21,6 +21,6 @@ Endpoint | Description
 
 ## Screenshots
 * Chatbot Demo
-![Chatbot Demo](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/chatbot-demo.png?token=AIWB3W576SXFUL23U4WAVB26QJMOG)
+![Chatbot Demo](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/chatbot-demo.png?token=AIWB3W6OMTOQDQEBMWYWTAC6QJOE2)
 * JSON Response
-![JSON Response](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/json.png?token=AIWB3WZHYJS6JTDTU67AV426QJMYU)
+![JSON Response](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/json.png?token=AIWB3W252JNKNZJPNK65CO26QJOGU)
