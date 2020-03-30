@@ -8,3 +8,6 @@ tell me the temperature
 how is the weather in
 tell me the weather
 show me the weather for
+how cold is it
+how cold is it outside
+how hot is it outside

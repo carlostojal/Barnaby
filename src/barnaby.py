@@ -16,6 +16,8 @@ class Barnaby:
     
     def interpret(self, q, train):
         q = q.lower()
+        response = {}
         neuralnetwork = NeuralNetwork(self.config)
-        return neuralnetwork.predict(q, train)
+        response['functionality'] = neuralnetwork.predict(q, train)
+        return json.dumps(response)
 

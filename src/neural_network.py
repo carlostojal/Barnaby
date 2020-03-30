@@ -10,7 +10,7 @@ class NeuralNetwork:
 
     def __init__(self, barnaby_config):
         self.barnaby_config = barnaby_config
-        self.NUM_WORDS = 20
+        self.NUM_WORDS = 50
         self.SEQ_LEN = 5
         self.EMBEDDING_SIZE = 50
         self.BATCH_SIZE = 8
@@ -44,7 +44,7 @@ class NeuralNetwork:
                 f.close()
                 for sentence in sentences:
                     if sentence != "":
-                        # sentence = self.remove_stopwords(sentence)
+                        sentence = self.remove_stopwords(sentence)
                         text.append(sentence)
                         func.append(x)
                 x += 1
@@ -87,13 +87,10 @@ class NeuralNetwork:
                         loss='sparse_categorical_crossentropy',
                         metrics=['accuracy'])
 
-        es = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', mode='max')
-        callbacks = [es]
         history = model.fit(self.train_seqs, self.train_df['func'].values,
                             batch_size = self.BATCH_SIZE,
                             epochs = self.EPOCHS,
-                            validation_split = 0.2,
-                            callbacks = callbacks)
+                            validation_split = 0.2)
 
         model.evaluate(self.test_seqs, self.test_df['func'].values)
 
@@ -120,7 +117,7 @@ class NeuralNetwork:
             self.save_model()
         self.load_model()
 
-        # sentence = self.remove_stopwords(sentence)
+        sentence = self.remove_stopwords(sentence)
         
         seqs = self.tokenizer.texts_to_sequences([sentence])
         seqs = tf.keras.preprocessing.sequence.pad_sequences(seqs, maxlen=self.SEQ_LEN, padding="post")
@@ -129,21 +126,6 @@ class NeuralNetwork:
 
         print(pred)
         
-        """
-        pred_df = pd.DataFrame(columns=['text', 'func'])
-        pred_df['text'] = [sentence]
-        pred_df['func'] = pred
-
-        pred = round(pred_df.values[0].item(1), 0)
-
-        if pred == 0 or pred == 1:
-            pred = "news"
-        elif pred == 2:
-            pred = "term_definitions"
-        else:
-            pred = "weather"
-        """
-
         labels = ["news", "term_definitions", "weather"]
 
         pred = labels[pred[0].argmax()]

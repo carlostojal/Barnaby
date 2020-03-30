@@ -1,3 +1,5 @@
 show me the weather
-is it hot outside?
-how cold is it?
+is it hot outside
+how cold is it
+do you know how is the weather
+how is the weather in lisbon
