@@ -1,4 +1,4 @@
-show me the weather
+show me the weather in porto
 is it hot outside
 how cold is it
 do you know how is the weather

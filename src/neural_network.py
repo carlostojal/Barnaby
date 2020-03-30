@@ -1,8 +1,13 @@
 
+#
+# Copyright (c) Carlos Tojal 2020
+# Barnaby
+# neural_network.py
+#
+
+# Barnaby brain. The neural network responsible for interpreting user inputs.
+
 import pandas as pd
-import glob
-import os
-import string
 import pickle
 import tensorflow as tf
 
@@ -15,8 +20,9 @@ class NeuralNetwork:
         self.EMBEDDING_SIZE = 50
         self.BATCH_SIZE = 8
         self.EPOCHS = 25
+        self.labels = ["news", "term_definitions", "weather"]
 
-    # removes stop words from string
+    # removes stop words from string to make each one more concise and relevant
     def remove_stopwords(self, string):
         f = open("../data/neural_network_{}/stopwords.txt".format(self.barnaby_config['lang']), "r")
         stopwords = f.read().split("\n")
@@ -75,6 +81,7 @@ class NeuralNetwork:
 
         self.tokenizer = tokenizer
 
+    # builds and compiles neural network model
     def build_model(self):
 
         model = tf.keras.Sequential([
@@ -96,19 +103,21 @@ class NeuralNetwork:
 
         self.model = model
 
+    # saves model in file
     def save_model(self):
         self.model.save("../data/neural_network_{}/model.h5".format(self.barnaby_config['lang']))
         
         with open("../data/neural_network_{}/tokenizer.pickle".format(self.barnaby_config['lang']), 'wb') as handle:
             pickle.dump(self.tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    
+    # loads model from file
     def load_model(self):
         self.model = tf.keras.models.load_model("../data/neural_network_{}/model.h5".format(self.barnaby_config['lang']))
         
         with open("../data/neural_network_{}/tokenizer.pickle".format(self.barnaby_config['lang']), 'rb') as f:
             self.tokenizer = pickle.load(f)
 
+    # predicts which functionality the user requested
     def predict(self, sentence, train):
         if train:
             self.get_data()
@@ -125,9 +134,7 @@ class NeuralNetwork:
         pred = self.model.predict(seqs)
 
         print(pred)
-        
-        labels = ["news", "term_definitions", "weather"]
 
-        pred = labels[pred[0].argmax()]
+        pred = self.labels[pred[0].argmax()]
 
         return str(pred)

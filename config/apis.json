@@ -1,0 +1,16 @@
+{   
+    "news": {
+        "key": "ea061f4b7a9b4d3a9df9025cdbc5b2ae"
+    },
+    "term_definitions": {
+        "url": "https://api.duckduckgo.com/"
+    },
+    "weather": {
+        "url": "https://api.openweathermap.org/data/2.5/weather",
+        "key": "e82d0e60bd00e407c9449ccc1903e976"
+    },
+    "geolocation": {
+        "url": "https://api.ipgeolocation.io/ipgeo",
+        "key": "747a7ad91fc84b2b83dff71d9ac0af16"
+    }
+}
