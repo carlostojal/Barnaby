@@ -7,6 +7,7 @@
 
 # Main functionalities
 
+import markdown
 import json
 import random
 from neural_network import NeuralNetwork
@@ -23,6 +24,12 @@ class Barnaby:
         f.close()
         self.config = config
         return config
+    
+    def get_readme(self):
+        f = open("../README.md", "r")
+        readme = markdown.markdown(f.read())
+        f.close()
+        return readme
     
     def interpret(self, q, train):
         from barnaby_core import BarnabyCore

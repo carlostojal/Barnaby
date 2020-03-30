@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello World!"
+    return assistant.get_readme()
 
 @app.route("/api_config")
 def api_config():

@@ -1,6 +1,6 @@
 # Barnaby
 
-Barnaby is a personal assistant API. This makes it offer many possibilities for integration with your projects. It uses APIs such as NewsAPI and DuckDuckGo Instant Answer API.
+Barnaby is a personal assistant API. This makes it offer many possibilities for integration with your projects. It uses APIs such as NewsAPI and DuckDuckGo Instant Answer API. You can test a [Chatbot Demo](https://github.com/carlostojal/BarnabyChatbot).
 
 ## How to use
 * Run script ```setup.sh``` to install all required dependencies.
@@ -18,3 +18,9 @@ Endpoint | Description
 ```/```  | Shows this README
 ```/api_config``` | Shows API configuration.
 ```/assistant``` | Barnaby endpoint. ```q``` paramether is mandatory (Example: "How is the weather?"). Set ```train``` paramether to true to train the neural network (not needed, unless you make changes to it). A JSON response will be returned.
+
+## Screenshots
+* Chatbot Demo
+![Chatbot Demo](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/chatbot-demo.png?token=AIWB3W576SXFUL23U4WAVB26QJMOG)
+* JSON Response
+![JSON Response](https://raw.githubusercontent.com/carlostojal/Barnaby/master/img/json.png?token=AIWB3WZHYJS6JTDTU67AV426QJMYU)
